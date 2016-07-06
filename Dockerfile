@@ -4,8 +4,8 @@ ENV GOPATH=/go \
     LANG=C.UTF-8 \
     PATH=/go/bin:/usr/local/go/bin:/opt/conda/bin:$PATH
 RUN set -ex && \
-    apk add --no-cache libstdc++ zeromq git && \
-    apk add --no-cache --virtual .build-deps musl-dev bash gcc go tzdata wget && \
+    apk add --no-cache libstdc++ git && \
+    apk add --no-cache --virtual .build-deps musl-dev bash gcc go tzdata wget zeromq-dev && \
     export GOLANG_VERSION=1.6.2 && \
     export GOLANG_SRC_URL=https://golang.org/dl/go$GOLANG_VERSION.src.tar.gz && \
     export GOLANG_SRC_SHA256=787b0b750d037016a30c6ed05a8a70a91b2e9db4bd9b1a2453aa502a63f1bccc && \
@@ -39,6 +39,7 @@ RUN set -ex && \
     mkdir -p ~/.ipython/kernels/gophernotes && \
     cp -r $GOPATH/src/github.com/gophergala2016/gophernotes/kernel/* ~/.ipython/kernels/gophernotes && \
     apk del .build-deps && \
+    apk add --no-cache zeromq && \
     find /opt -name __pycache__ | xargs rm -r && \
     rm -rf /root/.[apw]* /$MINICONDA /ipaexg00301* \
         /opt/conda/pkgs/* /golang.tar.gz /no-pic.patch
