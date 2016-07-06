@@ -1,7 +1,7 @@
-Golang and Python3.5 with jupyter
+Golang and Python3.5 with jupyter.
 ========
 - Japanese font installed. (Use "plt.rcParams['font.family'] = 'IPAexGothic'")
-- 58 packages are installed.
+- Miniconda and 58 packages are installed.
 
 package|ver|package|ver|package|ver
 :--|:--|:--|:--|:--|:--
