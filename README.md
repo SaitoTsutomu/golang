@@ -3,6 +3,13 @@ Golang and Python3.5 with jupyter.
 - Japanese font installed. (Use "plt.rcParams['font.family'] = 'IPAexGothic'")
 - Miniconda and 58 packages are installed.
 
+```
+firefox http://localhost:8888/ &
+docker run -it --rm -p 8888:8888 tsutomu7/golang
+```
+
+![go_sample](https://dl.dropboxusercontent.com/u/35689878/pic/go_sample.png)
+
 package|ver|package|ver|package|ver
 :--|:--|:--|:--|:--|:--
 backports|1.0|backports.shutil_get_terminal_size|1.0.0|**conda**|**4.1.6**
@@ -25,9 +32,3 @@ sqlite|3.13.0|terminado|0.6|tk|8.5.18
 tornado|4.3|traitlets|4.2.1|wheel|0.29.0
 xz|5.2.2|yaml|0.1.6|zeromq|4.1.4
 zlib|1.2.8|
-
-
-```
-firefox http://localhost:8888/ &
-docker run -it --rm -p 8888:8888 tsutomu7/golang
-```
