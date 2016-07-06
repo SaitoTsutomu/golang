@@ -46,4 +46,5 @@ RUN set -ex && \
 WORKDIR /root/
 ADD go_sample.tgz $WORKDIR
 EXPOSE 8888
+VOLUME /root/go/
 CMD ["sh", "-c", "jupyter notebook --ip=*"]
