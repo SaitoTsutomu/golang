@@ -3,6 +3,7 @@ FROM frolvlad/alpine-glibc
 ENV GOPATH=/go \
     LANG=C.UTF-8 \
     PATH=/go/bin:/usr/local/go/bin:/opt/conda/bin:$PATH
+ADD nb.tgz $HOME/.jupyter/nbconfig/
 RUN set -ex && \
     apk add --no-cache libstdc++ git && \
     apk add --no-cache --virtual .build-deps musl-dev bash gcc go tzdata wget zeromq-dev && \
@@ -28,8 +29,11 @@ RUN set -ex && \
     chmod -R 777 $GOPATH && \
     cd / && \
     bash /$MINICONDA -b -p /opt/conda && \
-    conda update -y conda pip setuptools && \
-    conda install -y jupyter && \
+    conda install -y nomkl psutil ncurses jupyter && \
+    conda update -y --all && \
+    mkdir -p $HOME/.local/share/jupyter && \
+    pip install --no-cache https://github.com/ipython-contrib/IPython-notebook-extensions/archive/master.zip && \
+    sed -i '6,9d' $HOME/.jupyter/jupyter_nbconvert_config.json && \
     unzip -q ipaexg00301.zip && \
     mkdir -p /usr/share/fonts/ && \
     mv /ipaexg00301/ipaexg.ttf /usr/share/fonts/ && \
