@@ -45,4 +45,5 @@ RUN set -ex && \
         /opt/conda/pkgs/* /golang.tar.gz /no-pic.patch
 WORKDIR /root/
 ADD go_sample.tgz $WORKDIR
+EXPOSE 8888
 CMD ["sh", "-c", "jupyter notebook --ip=*"]
