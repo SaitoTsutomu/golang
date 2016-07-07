@@ -43,7 +43,9 @@ RUN set -ex && \
     mkdir -p ~/.ipython/kernels/gophernotes && \
     cp -r $GOPATH/src/github.com/gophergala2016/gophernotes/kernel/* ~/.ipython/kernels/gophernotes && \
     apk del .build-deps && \
-    apk add --no-cache zeromq && \
+    apk add --no-cache zeromq vim && \
+    rm /usr/bin/vi && ln -s /usr/bin/vim /usr/bin/vi && \
+    echo "set number" > $HOME/.vimrc && \
     find /opt -name __pycache__ | xargs rm -r && \
     rm -rf /root/.[apw]* /$MINICONDA /ipaexg00301* \
         /opt/conda/pkgs/* /golang.tar.gz /no-pic.patch
