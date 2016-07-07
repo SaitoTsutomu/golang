@@ -3,7 +3,7 @@ FROM frolvlad/alpine-glibc
 ENV GOPATH=/go \
     LANG=C.UTF-8 \
     PATH=/go/bin:/usr/local/go/bin:/opt/conda/bin:$PATH
-ADD nb.tgz $HOME/.jupyter/nbconfig/
+ADD nbs.tgz $HOME/.jupyter/nbconfig/
 RUN set -ex && \
     apk add --no-cache libstdc++ git && \
     apk add --no-cache --virtual .build-deps musl-dev bash gcc go tzdata wget zeromq-dev && \
