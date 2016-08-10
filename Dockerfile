@@ -32,8 +32,8 @@ RUN set -ex && \
     conda install -y nomkl psutil ncurses jupyter && \
     conda update -y --all && \
     mkdir -p $HOME/.local/share/jupyter && \
-    pip install --no-cache https://github.com/ipython-contrib/IPython-notebook-extensions/archive/master.zip && \
-    sed -i '6,9d' $HOME/.jupyter/jupyter_nbconvert_config.json && \
+    #pip install --no-cache https://github.com/ipython-contrib/IPython-notebook-extensions/archive/master.zip && \
+    #sed -i '6,9d' $HOME/.jupyter/jupyter_nbconvert_config.json && \
     unzip -q ipaexg00301.zip && \
     mkdir -p /usr/share/fonts/ && \
     mv /ipaexg00301/ipaexg.ttf /usr/share/fonts/ && \
