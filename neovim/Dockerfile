@@ -1,16 +1,17 @@
 FROM tsutomu7/python
 
-ADD init.tgz ~/.config/nvim
+ADD init.tgz $HOME/.config/nvim
 RUN sudo apt-get update --fix-missing && \
     sudo apt-get install -y --no-install-recommends ca-certificates \
-        golang git software-properties-common gcc make && \
+        golang git software-properties-common gcc make &build-essential & \
     sudo add-apt-repository ppa:neovim-ppa/unstable && \
     sudo apt-get update --fix-missing && \
     sudo apt-get install -y neovim && \
     sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60 && \
     pip install --no-cache-dir neovim && \
-    vi +PlugInstall +qa && \
-    rm -rf /var/lib/apt/lists/*
+    sudo vi +PlugInstall +qa && \
+    sudo chown -R $USER .local && \
+    sudo rm -rf /var/lib/apt/lists/*
 ENV GOPATH=/go \
     PATH=/go/bin:$PATH
 CMD ["bash"]
