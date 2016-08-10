@@ -11,6 +11,7 @@ RUN export uid=1000 gid=1000 pswd=scientist && \
     apt-get install -y --no-install-recommends sudo ca-certificates \
         libglib2.0-0 libxext6 libsm6 libxrender1 tzdata busybox wget git \
         golang software-properties-common build-essential python3-dev python3-pip && \
+    pip3 --no-cache-dir install -U pip && \
     groupadd -g $gid $USER && \
     useradd -g $USER -G sudo -m -s /bin/bash $USER && \
     echo "$USER:$pswd" | chpasswd && \
