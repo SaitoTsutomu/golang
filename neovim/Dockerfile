@@ -9,8 +9,8 @@ RUN sudo apt-get update --fix-missing && \
     sudo apt-get install -y neovim && \
     sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60 && \
     pip install --no-cache-dir neovim && \
+    sudo chown -R $USER .config && \
     sudo vi +PlugInstall +qa && \
-    sudo chown -R $USER .local && \
     sudo rm -rf /var/lib/apt/lists/*
 ENV GOPATH=/go \
     PATH=/go/bin:$PATH
